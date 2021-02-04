@@ -52,7 +52,7 @@ public class UploadScores : MonoBehaviour
     }
     public void CalculateScore() 
     {
-        totalScore = (enemyKillCount+grazeCount+cancelCount)-((bombUseCount*bombPointLoss)+(missCount*missPointLoss));
+        totalScore = (enemyKillCount+grazeCount+cancelCount+totalScore)-((bombUseCount*bombPointLoss)+(missCount*missPointLoss));
         gameObject.GetComponent<Text>().text = totalScore.ToString();
     }
     public static IEnumerator Pull(string index)
