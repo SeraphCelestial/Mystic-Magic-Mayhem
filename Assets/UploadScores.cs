@@ -2,111 +2,72 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class UploadScores : MonoBehaviour
 {
-    string pushURL = "http://vgdapi.basmati.org/mods4.php";
-    public int enemyKillCount = 100;
-    public int grazeCount = 250;
-    public int cancelCount = 500;
-    public int totalScore = 0;
+    public const string PullURL = "http://vgdapi.basmati.org/gets4.php?groupid=am30&row=";
+    public int enemyKillCount = 0;
+    public int grazeCount = 0;
+    public int cancelCount = 0;
+    public static int totalScore = 0;
     public int bombUseCount = 0;
     public int missCount = 0;
-    private int bombPointLoss = -1000;
-    private int missPointLoss = -5000;
-    void Start() 
+    private int bombPointLoss = 10;
+    private int missPointLoss = 50;
+    public void ScoreUpload()
     {
-        StartCoroutine("UploadEnemyScore");
-        StartCoroutine("UploadGrazeScore");
-        StartCoroutine("UploadCancelScore");
-        StartCoroutine("UploadTotalScore");
+        StartCoroutine(MasterScript.Push(0, enemyKillCount.ToString()));
+        StartCoroutine(MasterScript.Push(1, grazeCount.ToString()));
+        StartCoroutine(MasterScript.Push(2, cancelCount.ToString()));
+        StartCoroutine(MasterScript.Push(3, totalScore.ToString()));
+    }
+    public void GrazeBullet()
+    {
+        grazeCount += 10;
+    }
+    public void KillEnemy()
+    {
+        enemyKillCount++;
+    }
+    public void UseBomb()
+    {
+        bombUseCount++;
+    }
+    public void TakeHit()
+    {
+        missCount++;
+    }
+    public void RetriveScore()
+    {
+        StartCoroutine(Pull("3"));
+    }
+    public static void RetriveScore(string webText)
+    {
+        string[] webData = webText.Split(',');
+        totalScore = int.Parse(webData[1]);
     }
     void Update() 
     {
         totalScore = (enemyKillCount+grazeCount+cancelCount)-((bombUseCount*bombPointLoss)+(missCount*missPointLoss));
+        gameObject.GetComponent<Text>().text = totalScore.ToString();
     }
-
-    IEnumerator UploadEnemyScore()
+    public static IEnumerator Pull(string index)
     {
-        WWWForm scoreForm = new WWWForm();
-        scoreForm.AddField("groupid", "am30");
-        scoreForm.AddField("grouppw", "rBcj8PJPke");
-        scoreForm.AddField("row", 0);
-        scoreForm.AddField("s4", enemyKillCount);
-
-        using (UnityWebRequest www = UnityWebRequest.Post(pushURL, scoreForm))
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(PullURL + index))
         {
-            yield return www.SendWebRequest();
-            if(www.isNetworkError || www.isHttpError)
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = index.Split('/');
+            int page = pages.Length - 1;
+
+            if (webRequest.isNetworkError)
             {
-                Debug.Log(www.error);
+                Debug.LogError("An unexpected error has occured whilst trying to pull.");
             }
             else
             {
-                Debug.Log("Data has been pushed successfully!");
-            }
-        }
-    }
-    IEnumerator UploadGrazeScore()
-    {
-        WWWForm scoreForm = new WWWForm();
-        scoreForm.AddField("groupid", "am30");
-        scoreForm.AddField("grouppw", "rBcj8PJPke");
-        scoreForm.AddField("row", 1);
-        scoreForm.AddField("s4", grazeCount);
-
-        using (UnityWebRequest www = UnityWebRequest.Post(pushURL, scoreForm))
-        {
-            yield return www.SendWebRequest();
-            if(www.isNetworkError || www.isHttpError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                Debug.Log("Data has been pushed successfully!");
-            }
-        }
-    }
-    IEnumerator UploadCancelScore()
-    {
-        WWWForm scoreForm = new WWWForm();
-        scoreForm.AddField("groupid", "am30");
-        scoreForm.AddField("grouppw", "rBcj8PJPke");
-        scoreForm.AddField("row", 2);
-        scoreForm.AddField("s4", cancelCount);
-
-        using (UnityWebRequest www = UnityWebRequest.Post(pushURL, scoreForm))
-        {
-            yield return www.SendWebRequest();
-            if(www.isNetworkError || www.isHttpError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                Debug.Log("Data has been pushed successfully!");
-            }
-        }
-    }
-    IEnumerator UploadTotalScore()
-    {
-        WWWForm scoreForm = new WWWForm();
-        scoreForm.AddField("groupid", "am30");
-        scoreForm.AddField("grouppw", "rBcj8PJPke");
-        scoreForm.AddField("row", 3);
-        scoreForm.AddField("s4", totalScore);
-
-        using (UnityWebRequest www = UnityWebRequest.Post(pushURL, scoreForm))
-        {
-            yield return www.SendWebRequest();
-            if(www.isNetworkError || www.isHttpError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                Debug.Log("Data has been pushed successfully!");
+                RetriveScore(webRequest.downloadHandler.text);
             }
         }
     }
