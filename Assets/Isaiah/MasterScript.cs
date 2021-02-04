@@ -10,12 +10,13 @@ public class MasterScript : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(Push(60, "Isaiah was here."));
-        StartCoroutine(Pull("60"));
+        StartCoroutine(Clear());
     }
 
     public static IEnumerator Push(int index, string content)
     {
+        IsaiahsVars.continueClearing = false;
+
         WWWForm form = new WWWForm(); // Creates new WebRequest form.
 
         form.AddField("groupid", "am30"); // Name of the database.
@@ -27,6 +28,8 @@ public class MasterScript : MonoBehaviour
         {
             yield return webRequest.SendWebRequest(); // Waits for WebRequest.
 
+            IsaiahsVars.continueClearing = true;
+
             if (webRequest.isNetworkError)
             {
                 Debug.LogError("An unexpected error has occured whilst trying to push.");
@@ -35,16 +38,18 @@ public class MasterScript : MonoBehaviour
             {
                 Debug.Log("A push " + content + " has been added to row " + index);
             }
+
+            yield return null;
         }
     }
 
-    public static IEnumerator Pull(string index)
+    public static IEnumerator Pull(string index, string varToAssign)
     {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(PullURL + index))
         {
             yield return webRequest.SendWebRequest();
 
-            string[] pages = index.Split('/');
+            string[] pages = index.Split(',');
             int page = pages.Length - 1;
 
             if (webRequest.isNetworkError)
@@ -53,9 +58,28 @@ public class MasterScript : MonoBehaviour
             }
             else
             {
-                string info = webRequest.downloadHandler.text;
-                Debug.Log(info);
+                varToAssign = webRequest.downloadHandler.text;
+
+                IsaiahsVars.varToAssign = varToAssign;
+
+                Debug.Log(varToAssign);
             }
         }
     }
+
+    public IEnumerator Clear()
+    {
+        IsaiahsVars.continueClearing = true;
+
+        for (int i = 249; i >= 249 && i <= 500; i++)
+        {
+            while(IsaiahsVars.continueClearing == false)
+            {
+                yield return null;
+            }
+
+            StartCoroutine(Push(i, "~"));
+        }
+    }
+    
 }
