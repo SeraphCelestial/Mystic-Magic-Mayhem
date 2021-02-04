@@ -11,16 +11,18 @@ public class UploadScores : MonoBehaviour
     public int grazeCount = 0;
     public int cancelCount = 0;
     public static int totalScore = 0;
+    public static GameObject text;
     public int bombUseCount = 0;
     public int missCount = 0;
     private int bombPointLoss = 10;
     private int missPointLoss = 50;
+    void Start() 
+    {
+        text = this.gameObject;
+    }
     public void ScoreUpload()
     {
-        StartCoroutine(MasterScript.Push(0, enemyKillCount.ToString()));
-        StartCoroutine(MasterScript.Push(1, grazeCount.ToString()));
-        StartCoroutine(MasterScript.Push(2, cancelCount.ToString()));
-        StartCoroutine(MasterScript.Push(3, totalScore.ToString()));
+        StartCoroutine(MasterScript.Push(0, totalScore.ToString()));
     }
     public void GrazeBullet()
     {
@@ -40,14 +42,15 @@ public class UploadScores : MonoBehaviour
     }
     public void RetriveScore()
     {
-        StartCoroutine(Pull("3"));
+        StartCoroutine(Pull("0"));
     }
-    public static void RetriveScore(string webText)
+    public static void RetriveScore2(string webText)
     {
         string[] webData = webText.Split(',');
         totalScore = int.Parse(webData[1]);
+        text.GetComponent<Text>().text = totalScore.ToString();
     }
-    void Update() 
+    public void CalculateScore() 
     {
         totalScore = (enemyKillCount+grazeCount+cancelCount)-((bombUseCount*bombPointLoss)+(missCount*missPointLoss));
         gameObject.GetComponent<Text>().text = totalScore.ToString();
@@ -67,7 +70,7 @@ public class UploadScores : MonoBehaviour
             }
             else
             {
-                RetriveScore(webRequest.downloadHandler.text);
+                RetriveScore2(webRequest.downloadHandler.text);
             }
         }
     }
