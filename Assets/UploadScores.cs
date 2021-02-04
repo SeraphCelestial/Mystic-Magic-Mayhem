@@ -6,15 +6,21 @@ using UnityEngine.Networking;
 public class UploadScores : MonoBehaviour
 {
     string pushURL = "http://vgdapi.basmati.org/mods4.php";
-    public int enemyKillCount = 0;
-    public int grazeCount = 0;
-    public int cancelCount = 0;
+    public int enemyKillCount = 100;
+    public int grazeCount = 250;
+    public int cancelCount = 500;
     public int totalScore = 0;
     public int bombUseCount = 0;
     public int missCount = 0;
     private int bombPointLoss = -1000;
     private int missPointLoss = -5000;
-
+    void Start() 
+    {
+        StartCoroutine("UploadEnemyScore");
+        StartCoroutine("UploadGrazeScore");
+        StartCoroutine("UploadCancelScore");
+        StartCoroutine("UploadTotalScore");
+    }
     void Update() 
     {
         totalScore = (enemyKillCount+grazeCount+cancelCount)-((bombUseCount*bombPointLoss)+(missCount*missPointLoss));
@@ -37,7 +43,7 @@ public class UploadScores : MonoBehaviour
             }
             else
             {
-
+                Debug.Log("Data has been pushed successfully!");
             }
         }
     }
@@ -58,7 +64,7 @@ public class UploadScores : MonoBehaviour
             }
             else
             {
-
+                Debug.Log("Data has been pushed successfully!");
             }
         }
     }
@@ -79,7 +85,7 @@ public class UploadScores : MonoBehaviour
             }
             else
             {
-
+                Debug.Log("Data has been pushed successfully!");
             }
         }
     }
@@ -100,7 +106,7 @@ public class UploadScores : MonoBehaviour
             }
             else
             {
-
+                Debug.Log("Data has been pushed successfully!");
             }
         }
     }
