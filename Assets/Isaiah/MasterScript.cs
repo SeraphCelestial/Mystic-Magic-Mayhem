@@ -71,7 +71,7 @@ public class MasterScript : MonoBehaviour
     {
         IsaiahsVars.continueClearing = true;
 
-        for (int i = 249; i >= 249 && i <= 500; i++)
+        for (int i = 249; i >= 249 && i <= 260; i++)
         {
             while(IsaiahsVars.continueClearing == false)
             {
