@@ -29,7 +29,7 @@ public class Queuing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(IsaiahsVars.Player1);
+       
     }
 
 
@@ -56,13 +56,13 @@ public class Queuing : MonoBehaviour
 
         if (Player1Space == null || Player1Space.Contains("~"))
         {
-            
+            Player1Space = CurrentPlayerName;
 
             StartCoroutine(MasterScript.Push(250, Player1Space));
         }
         else if (Player2Space == null || Player2Space.Contains("~"))
         {
-            Player1Space = CurrentPlayerName;
+            Player2Space = CurrentPlayerName;
 
             StartCoroutine(MasterScript.Push(251, Player2Space));
         }
