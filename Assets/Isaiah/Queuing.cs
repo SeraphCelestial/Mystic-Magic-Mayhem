@@ -29,7 +29,7 @@ public class Queuing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
     }
 
 
@@ -74,9 +74,12 @@ public class Queuing : MonoBehaviour
 
     public IEnumerator AssignName()
     {
-        StartCoroutine(PullNames());
+        while (Player2Space.Contains("~"))
+        {
+            yield return new WaitForSeconds(1.5f);
 
-        yield return new WaitForSeconds(1f);
+            StartCoroutine(PullNames());
+        }
 
         player1Data = Player1Space.Split(',');
 
