@@ -76,9 +76,9 @@ public class Queuing : MonoBehaviour
     {
         while (Player2Space.Contains("~"))
         {
-            yield return new WaitForSeconds(1.5f);
-
             StartCoroutine(PullNames());
+
+            yield return new WaitForSeconds(1.5f);
         }
 
         player1Data = Player1Space.Split(',');
@@ -89,6 +89,8 @@ public class Queuing : MonoBehaviour
         {
             Player1.text = player1Data[1];
         }
+
+        yield return new WaitForSeconds(.5f);
 
         if (player2Data[1] != null)
         {
