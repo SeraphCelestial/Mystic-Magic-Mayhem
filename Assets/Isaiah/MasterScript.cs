@@ -10,7 +10,7 @@ public class MasterScript : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(Clear());
+        StartCoroutine(IsaiahClear());
     }
 
     public static IEnumerator Push(int index, string content)
@@ -67,11 +67,11 @@ public class MasterScript : MonoBehaviour
         }
     }
 
-    public IEnumerator Clear()
+    public IEnumerator IsaiahClear()
     {
         IsaiahsVars.continueClearing = true;
 
-        for (int i = 249; i >= 249 && i <= 500; i++)
+        for (int i = 249; i >= 249 && i <= 260; i++)
         {
             while(IsaiahsVars.continueClearing == false)
             {
