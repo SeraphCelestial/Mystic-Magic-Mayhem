@@ -54,8 +54,6 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        IsaiahsVars.Player1 = IsaiahsVars.varToAssign;
-
         if (IsaiahsVars.Player1 == null || IsaiahsVars.Player1.Contains("~"))
         {
             IsaiahsVars.Player1 = CurrentPlayerName;
