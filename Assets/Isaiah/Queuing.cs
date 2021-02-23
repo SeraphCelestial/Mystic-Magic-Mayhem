@@ -29,7 +29,7 @@ public class Queuing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(IsaiahsVars.Player1);
     }
 
 
@@ -54,19 +54,15 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        if (IsaiahsVars.Player1 == null || IsaiahsVars.Player1.Contains("~"))
+        if (Player1Space == null || Player1Space.Contains("~"))
         {
-            IsaiahsVars.Player1 = CurrentPlayerName;
-
-            Player1Space = CurrentPlayerName;
+            
 
             StartCoroutine(MasterScript.Push(250, Player1Space));
         }
-        else if (IsaiahsVars.Player2 == null || IsaiahsVars.Player2.Contains("~"))
+        else if (Player2Space == null || Player2Space.Contains("~"))
         {
-            IsaiahsVars.Player2 = CurrentPlayerName;
-
-            Player2Space = CurrentPlayerName;
+            Player1Space = CurrentPlayerName;
 
             StartCoroutine(MasterScript.Push(251, Player2Space));
         }
@@ -82,9 +78,9 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        player1Data = IsaiahsVars.Player1.Split(',');
+        player1Data = Player1Space.Split(',');
 
-        player2Data = IsaiahsVars.Player2.Split(',');
+        player2Data = Player2Space.Split(',');
 
         if (player1Data[1] != null)
         {
@@ -102,15 +98,15 @@ public class Queuing : MonoBehaviour
     {
         StartCoroutine(MasterScript.Pull("250", IsaiahsVars.varToAssign));
 
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.5f);
 
-        IsaiahsVars.Player1 = IsaiahsVars.varToAssign;
+        Player1Space = IsaiahsVars.varToAssign;
 
         StartCoroutine(MasterScript.Pull("251", IsaiahsVars.varToAssign));
 
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.5f);
 
-        IsaiahsVars.Player2 = IsaiahsVars.varToAssign;
+        Player2Space = IsaiahsVars.varToAssign;
     }
 
 }
