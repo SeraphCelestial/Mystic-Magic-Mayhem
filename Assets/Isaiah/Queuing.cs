@@ -47,7 +47,6 @@ public class Queuing : MonoBehaviour
 
     public IEnumerator PlayerChoice()
     {
-
         nameInputField.SetActive(false);
 
         StartCoroutine(PullNames());
@@ -60,7 +59,8 @@ public class Queuing : MonoBehaviour
 
             StartCoroutine(MasterScript.Push(250, Player1Space));
         }
-        else if (Player2Space == null || Player2Space.Contains("~"))
+        
+        if (Player2Space == null || Player2Space.Contains("~"))
         {
             Player2Space = CurrentPlayerName;
 
@@ -80,6 +80,8 @@ public class Queuing : MonoBehaviour
 
             yield return new WaitForSeconds(1.5f);
         }
+
+        yield return new WaitForSeconds(1f);
 
         player1Data = Player1Space.Split(',');
 
