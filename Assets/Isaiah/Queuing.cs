@@ -95,7 +95,7 @@ public class Queuing : MonoBehaviour
             Player1.text = player1Data[1];
         }
 
-        PullP2();
+        StartCoroutine(PullP2());
 
         yield return new WaitForSeconds(1f);
 
