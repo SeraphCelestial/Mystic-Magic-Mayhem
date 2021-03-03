@@ -80,7 +80,7 @@ public class Queuing : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         Debug.Log(Player1Space);
         Debug.Log(Player2Space);
@@ -91,6 +91,10 @@ public class Queuing : MonoBehaviour
         {
             Player1.text = player1Data[1];
         }
+
+        PullP2();
+
+        yield return new WaitForSeconds(1f);
 
         player2Data = Player2Space.Split(',');
 
