@@ -92,11 +92,6 @@ public class Queuing : MonoBehaviour
 
         player1Data = Player1Space.Split(',');
 
-        if (player1Data[1] != null)
-        {
-            Player1.text = player1Data[1];
-        }
-
         StartCoroutine(PullP2());
 
         yield return new WaitForSeconds(1f);
@@ -104,6 +99,11 @@ public class Queuing : MonoBehaviour
         Debug.Log(Player2Space);
 
         player2Data = Player2Space.Split(',');
+
+        if (player1Data[1] != null)
+        {
+            Player1.text = player1Data[1];
+        }
 
         if (player2Data[1] != null)
         {
