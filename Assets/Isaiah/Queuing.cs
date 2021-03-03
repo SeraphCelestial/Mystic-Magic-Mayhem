@@ -96,11 +96,11 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        player2Data = Player2Space.Split(',');
+        //player2Data = Player2Space.Split(',');
 
-        if (player2Data[1] != null)
+        if (Player2Space != null)
         {
-            Player2.text = player2Data[1];
+            Player2.text = Player2Space;
         }
         
     }
