@@ -80,7 +80,7 @@ public class Queuing : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         Debug.Log(Player1Space);
         Debug.Log(Player2Space);
