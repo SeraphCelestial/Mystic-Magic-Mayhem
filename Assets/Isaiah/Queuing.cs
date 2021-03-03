@@ -59,8 +59,7 @@ public class Queuing : MonoBehaviour
 
             StartCoroutine(MasterScript.Push(250, Player1Space));
         }
-        
-        if (Player2Space == null || Player2Space.Contains("~"))
+        else if (Player2Space == null || Player2Space.Contains("~"))
         {
             Player2Space = CurrentPlayerName;
 
@@ -83,16 +82,17 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        player1Data = Player1Space.Split(',');
+        Debug.Log(Player1Space);
+        Debug.Log(Player2Space);
 
-        player2Data = Player2Space.Split(',');
+        player1Data = Player1Space.Split(',');
 
         if (player1Data[1] != null)
         {
             Player1.text = player1Data[1];
         }
 
-        yield return new WaitForSeconds(.5f);
+        player2Data = Player2Space.Split(',');
 
         if (player2Data[1] != null)
         {
@@ -107,8 +107,21 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
+        Debug.Log(IsaiahsVars.varToAssign);
+
         Player1Space = IsaiahsVars.varToAssign;
 
+        StartCoroutine(MasterScript.Pull("251", IsaiahsVars.varToAssign));
+
+        yield return new WaitForSeconds(.5f);
+
+        Debug.Log(IsaiahsVars.varToAssign);
+
+        Player2Space = IsaiahsVars.varToAssign;
+    }
+
+    public IEnumerator PullP2()
+    {
         StartCoroutine(MasterScript.Pull("251", IsaiahsVars.varToAssign));
 
         yield return new WaitForSeconds(.5f);
