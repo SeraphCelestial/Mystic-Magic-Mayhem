@@ -68,6 +68,8 @@ public class Queuing : MonoBehaviour
             Player2Space = CurrentPlayerName;
 
             StartCoroutine(MasterScript.Push(251, Player2Space));
+
+            yield return new WaitForSeconds(1f);
         }
 
         yield return new WaitForSeconds(1f);
@@ -101,11 +103,9 @@ public class Queuing : MonoBehaviour
 
         player2Data = Player2Space.Split(',');
 
-        player1Data = Player1Space.Split(',');
-
-        if (player1Data[1] != null)
+        if (player2Data[1] != null)
         {
-            Player1.text = player1Data[1];
+            Player2.text = player2Data[1];
         }
 
     }
