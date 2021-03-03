@@ -86,6 +86,8 @@ public class Queuing : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
+        StartCoroutine(PullP1());
+
         yield return new WaitForSeconds(1f);
 
         player1Data = Player1Space.Split(',');
