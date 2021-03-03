@@ -49,9 +49,13 @@ public class Queuing : MonoBehaviour
     {
         nameInputField.SetActive(false);
 
-        StartCoroutine(PullNames());
+        StartCoroutine(PullP1());
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(PullP2());
+
+        yield return new WaitForSeconds(1f);
 
         if (Player1Space == null || Player1Space.Contains("~"))
         {
@@ -75,15 +79,12 @@ public class Queuing : MonoBehaviour
     {
         while (Player2Space.Contains("~"))
         {
-            StartCoroutine(PullNames());
+            StartCoroutine(PullP2());
 
             yield return new WaitForSeconds(1.5f);
         }
 
         yield return new WaitForSeconds(1f);
-
-        Debug.Log(Player1Space);
-        Debug.Log(Player2Space);
 
         player1Data = Player1Space.Split(',');
 
@@ -96,32 +97,29 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        //player2Data = Player2Space.Split(',');
+        Debug.Log(Player2Space);
 
-        if (Player2Space != null)
+        player2Data = Player2Space.Split(',');
+
+        player1Data = Player1Space.Split(',');
+
+        if (player1Data[1] != null)
         {
-            Player2.text = Player2Space;
+            Player1.text = player1Data[1];
         }
-        
+
     }
     
-    public IEnumerator PullNames()
+    public IEnumerator PullP1()
     {
         StartCoroutine(MasterScript.Pull("250", IsaiahsVars.varToAssign));
 
         yield return new WaitForSeconds(.5f);
 
-        Debug.Log(IsaiahsVars.varToAssign);
+        //Debug.Log(IsaiahsVars.varToAssign);
 
         Player1Space = IsaiahsVars.varToAssign;
 
-        StartCoroutine(MasterScript.Pull("251", IsaiahsVars.varToAssign));
-
-        yield return new WaitForSeconds(.5f);
-
-        Debug.Log(IsaiahsVars.varToAssign);
-
-        Player2Space = IsaiahsVars.varToAssign;
     }
 
     public IEnumerator PullP2()
@@ -129,6 +127,8 @@ public class Queuing : MonoBehaviour
         StartCoroutine(MasterScript.Pull("251", IsaiahsVars.varToAssign));
 
         yield return new WaitForSeconds(.5f);
+
+        //Debug.Log(IsaiahsVars.varToAssign);
 
         Player2Space = IsaiahsVars.varToAssign;
     }
