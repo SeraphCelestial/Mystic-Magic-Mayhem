@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class Boss1Behavior : MonoBehaviour
 {
-    public int boss1Health = 1000;
+    public float boss1Health = 1000;
+    public GameObject player;
+    public GameObject SpellCreationManager;
+
+    void Start()
+    {
+        SpellCreationManager = GameObject.Find("SpellCreationManager");
+    }
+    
 
     void Update()
     {
         if(boss1Health <= 0)
         {
-            CreateSpells.spellSelectionUI.gameObject.SetActive(true);
-            Destroy(this.gameObject);
+           SpellCreationManager.GetComponent<CreateSpells>().ResetPractice();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if(collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            boss1Health = boss1Health - .5f;
         }
     }
 }

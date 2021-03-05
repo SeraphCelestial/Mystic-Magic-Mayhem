@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: a70b515e087bc9036af901eef2a1cee1
+  - enabled: 1
+    path: Assets/Scenes/Queuing test.unity
+    guid: ba9e81ee8ce22f142b0a52e9b5c50de3
+  - enabled: 1
+    path: Assets/Scenes/BossSpellPracticeMode.unity
+    guid: a40e6e300d74ffe948f8e5b0f2df0d6c
   m_configObjects: {}

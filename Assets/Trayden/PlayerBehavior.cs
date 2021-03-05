@@ -6,12 +6,16 @@ public class PlayerBehavior : MonoBehaviour
 {
     public GameObject hitbox;
     public GameObject playerBullet;
+    public GameObject boss1;
+    public GameObject SpellCreationManager;
     private Rigidbody2D rb2;
     private float movementSpeed = 5.0f;
 
     void Start()
     {
         rb2 = gameObject.GetComponent<Rigidbody2D>();
+        boss1 = GameObject.FindGameObjectWithTag("Boss");
+        SpellCreationManager = GameObject.Find("SpellCreationManager");
     }
 
     void Update()
@@ -59,9 +63,15 @@ public class PlayerBehavior : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Boss"))
         {
-            Destroy(collision.gameObject);
-            CreateSpells.spellSelectionUI.gameObject.SetActive(true);
-            Destroy(this.gameObject);
+            SpellCreationManager.GetComponent<CreateSpells>().ResetPractice();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {
+        if(collision.gameObject.CompareTag("Bullet"))
+        {
+            SpellCreationManager.GetComponent<CreateSpells>().ResetPractice();
         }
     }
 }

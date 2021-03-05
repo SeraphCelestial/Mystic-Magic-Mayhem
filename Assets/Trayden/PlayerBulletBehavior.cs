@@ -13,12 +13,8 @@ public class PlayerBulletBehavior : MonoBehaviour
         rb2.velocity = new Vector2(0, 40);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) 
+    private void OnBecameInvisible() 
     {
-        if(collision.gameObject == boss && boss.gameObject.name == "Boss1")
-        {
-            boss.GetComponent<Boss1Behavior>().boss1Health--;
-            Destroy(this.gameObject);
-        }
+        Destroy(this.gameObject);
     }
 }
