@@ -27,6 +27,7 @@ public class Boss1Behavior : MonoBehaviour
         if(collision.gameObject.CompareTag("PlayerBullet"))
         {
             boss1Health = boss1Health - .5f;
+            Destroy(collision.gameObject);
         }
     }
 }
