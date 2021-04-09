@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject playerBullet;
     public GameObject boss;
     public GameObject SpellCreationManager;
-    public GameObject[] bullets;
+    List<GameObject> bullets;
     private Rigidbody2D rb2;
     private float movementSpeed = 5.0f;
 
@@ -21,6 +21,7 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(UploadScores.totalScore);
         if(Input.GetKey(KeyCode.LeftArrow))
         {
             rb2.velocity = new Vector2(-movementSpeed, 0);
@@ -60,11 +61,14 @@ public class PlayerBehavior : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.X))
         {
-            bullets = GameObject.FindGameObjectsWithTag("Bullet");
+            bullets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Bullet"));
             foreach(GameObject bullet in bullets)
             {
+                UploadScores.cancelCount++;
                 Destroy(bullet);
             }
+            UploadScores.bombUseCount++;
+            UploadScores.CalculateScore();
         }
     }
 
@@ -73,6 +77,8 @@ public class PlayerBehavior : MonoBehaviour
         if(collision.gameObject.CompareTag("Boss"))
         {
             gameObject.transform.position = new Vector3(0f, -3.5f, 0f);
+            UploadScores.missCount++;
+            UploadScores.CalculateScore();
         }
     }
 
@@ -81,6 +87,8 @@ public class PlayerBehavior : MonoBehaviour
         if(collision.gameObject.CompareTag("Bullet"))
         {
             gameObject.transform.position = new Vector3(0f, -3.5f, 0f);
+            UploadScores.missCount++;
+            UploadScores.CalculateScore();
         }
     }
 }
