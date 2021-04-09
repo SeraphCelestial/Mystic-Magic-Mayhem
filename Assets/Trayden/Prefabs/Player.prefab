@@ -197,7 +197,7 @@ MonoBehaviour:
   hitbox: {fileID: 8504506454320249934}
   playerBullet: {fileID: 7009148529131382889, guid: 3e64fb02ca7e0cf9b86d922bacea5fae,
     type: 3}
-  boss1: {fileID: 0}
+  boss: {fileID: 0}
   SpellCreationManager: {fileID: 0}
 --- !u!50 &8504506454633762413
 Rigidbody2D:

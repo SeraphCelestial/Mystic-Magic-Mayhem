@@ -16,9 +16,4 @@ public static class IsaiahsVars
     public static string Player2Class;
 
     #endregion QueuingVars
-
-
-    public static string SelectedCharacter;
-
-
 }

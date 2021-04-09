@@ -7,7 +7,7 @@ public class TitleButtonBehavior : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Queuing test");
+        SceneManager.LoadScene("Queuing");
     }
     public void QuitGame()
     {

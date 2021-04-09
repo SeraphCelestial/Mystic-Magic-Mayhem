@@ -11,7 +11,7 @@ public class PlayerBehavior : MonoBehaviour
     List<GameObject> bullets;
     private Rigidbody2D rb2;
     private float movementSpeed = 5.0f;
-
+    
     void Start()
     {
         rb2 = gameObject.GetComponent<Rigidbody2D>();
@@ -21,7 +21,6 @@ public class PlayerBehavior : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(UploadScores.totalScore);
         if(Input.GetKey(KeyCode.LeftArrow))
         {
             rb2.velocity = new Vector2(-movementSpeed, 0);
@@ -69,6 +68,8 @@ public class PlayerBehavior : MonoBehaviour
             }
             UploadScores.bombUseCount++;
             UploadScores.CalculateScore();
+            SpellCreationManager.GetComponent<UploadScores>().ScoreUpload();
+            SpellCreationManager.GetComponent<UploadScores>().RetriveScore();
         }
     }
 
@@ -79,6 +80,8 @@ public class PlayerBehavior : MonoBehaviour
             gameObject.transform.position = new Vector3(0f, -3.5f, 0f);
             UploadScores.missCount++;
             UploadScores.CalculateScore();
+            SpellCreationManager.GetComponent<UploadScores>().ScoreUpload();
+            SpellCreationManager.GetComponent<UploadScores>().RetriveScore();
         }
     }
 
@@ -89,6 +92,8 @@ public class PlayerBehavior : MonoBehaviour
             gameObject.transform.position = new Vector3(0f, -3.5f, 0f);
             UploadScores.missCount++;
             UploadScores.CalculateScore();
+            SpellCreationManager.GetComponent<UploadScores>().ScoreUpload();
+            SpellCreationManager.GetComponent<UploadScores>().RetriveScore();
         }
     }
 }

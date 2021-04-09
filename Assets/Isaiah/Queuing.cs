@@ -21,26 +21,19 @@ public class Queuing : MonoBehaviour
     string[] player1Data;
     string[] player2Data;
 
-    public bool isPlayer1;
-    public bool isPlayer2;
+    public static bool isPlayer1;
+    public static bool isPlayer2;
 
     public bool player1Selected;
     public bool player2Selected;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         if(player1Selected == true && player2Selected == true)
         {
-            CharacterSelect();
+            StartGame();
         }
     }
-
 
     public void NameChosen()
     {
@@ -135,8 +128,6 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        //Debug.Log(IsaiahsVars.varToAssign);
-
         Player1Space = IsaiahsVars.varToAssign;
     }
 
@@ -146,14 +137,12 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(.5f);
 
-        //Debug.Log(IsaiahsVars.varToAssign);
-
         Player2Space = IsaiahsVars.varToAssign;
     }
 
-    public void CharacterSelect()
+    public void StartGame()
     {
-        SceneManager.LoadScene("FinalResults");
+        SceneManager.LoadScene("Game");
     }
 
 }

@@ -10,14 +10,11 @@ public class BossBehavior : MonoBehaviour
     public GameObject player;
     public GameObject SpellCreationManager;
     public GameObject[] leftovers;
-
     void Start()
     {
         SpellCreationManager = GameObject.Find("SpellCreationManager");
         SpellCreationManager.GetComponent<CreateSpells>().StartCoroutine("GenSpell1");
     }
-    
-
     void Update()
     {
         if(bossHealth <= 0)
@@ -51,7 +48,6 @@ public class BossBehavior : MonoBehaviour
             }
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision) 
     {
         if(collision.gameObject.CompareTag("PlayerBullet"))
