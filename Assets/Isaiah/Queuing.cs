@@ -125,8 +125,9 @@ public class Queuing : MonoBehaviour
             Player2.text = player2Data[1];
         }
 
-        player1Selected = true;
-        player2Selected = true;
+        yield return new WaitForSeconds(1.5f);
+
+        SceneManager.LoadScene("FinalResults");
     }
     
     public IEnumerator PullP1()
