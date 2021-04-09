@@ -9,6 +9,11 @@ public class TitleButtonBehavior : MonoBehaviour
     {
         SceneManager.LoadScene("Queuing");
     }
+
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadScene("Title");
+    }
     public void QuitGame()
     {
         Application.Quit();

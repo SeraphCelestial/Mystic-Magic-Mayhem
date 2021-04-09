@@ -119,8 +119,7 @@ public class Queuing : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f);
-
-        SceneManager.LoadScene("FinalResults");
+        StartGame();
     }
     
     public IEnumerator PullP1()

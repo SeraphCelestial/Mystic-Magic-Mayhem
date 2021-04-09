@@ -44,6 +44,7 @@ public class BossBehavior : MonoBehaviour
             }
             if(defeatCount == 3)
             {
+                SpellCreationManager.GetComponent<UploadScores>().FinalScoreUpload();
                 SceneManager.LoadScene("FinalResults");
             }
         }

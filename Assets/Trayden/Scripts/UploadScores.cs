@@ -30,9 +30,27 @@ public class UploadScores : MonoBehaviour
         }
         else if(Queuing.isPlayer2 == true)
         {
-            rowNumber = 1;
+            rowNumber = 4;
         }
         StartCoroutine(MasterScript.Push(rowNumber, totalScore.ToString()));
+    }
+
+    public void FinalScoreUpload()
+    {
+        if(Queuing.isPlayer1 == true)
+        {
+            StartCoroutine(MasterScript.Push(0, totalScore.ToString()));
+            StartCoroutine(MasterScript.Push(1, cancelCount.ToString()));
+            StartCoroutine(MasterScript.Push(2, bombUseCount.ToString()));
+            StartCoroutine(MasterScript.Push(3, missCount.ToString()));
+        }
+        else if(Queuing.isPlayer2 == true)
+        {
+            StartCoroutine(MasterScript.Push(4, totalScore.ToString()));
+            StartCoroutine(MasterScript.Push(5, cancelCount.ToString()));
+            StartCoroutine(MasterScript.Push(6, bombUseCount.ToString()));
+            StartCoroutine(MasterScript.Push(7, missCount.ToString()));
+        }
     }
     public void RetriveScore()
     {
@@ -42,7 +60,7 @@ public class UploadScores : MonoBehaviour
         }
         else if(Queuing.isPlayer2 == false)
         {
-            rowNumber = 1;
+            rowNumber = 4;
         }
         StartCoroutine(Pull(rowNumber.ToString()));
     }
