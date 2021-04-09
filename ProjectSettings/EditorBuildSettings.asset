@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalResults.unity
     guid: 39b35039b8bfe275facaae7e5299e385
+  - enabled: 1
+    path: Assets/Scenes/Queuing.unity
+    guid: ba9e81ee8ce22f142b0a52e9b5c50de3
   m_configObjects: {}
