@@ -153,7 +153,7 @@ public class Queuing : MonoBehaviour
 
     public void CharacterSelect()
     {
-        SceneManager.LoadScene("CharacterSelect");
+        SceneManager.LoadScene("FinalResults");
     }
 
 }

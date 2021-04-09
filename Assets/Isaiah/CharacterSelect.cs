@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelect : MonoBehaviour
 {
@@ -12,12 +14,12 @@ public class CharacterSelect : MonoBehaviour
 
     void Start()
     {
-        
+        StartCoroutine(PlayerChoice());
     }
 
-    public IEnumerator CharacterSelect()
+    public IEnumerator CharacterSelection()
     {
-
+        yield return new WaitForSeconds (1f);
     }
 
     public IEnumerator PlayerChoice()
@@ -76,17 +78,16 @@ public class CharacterSelect : MonoBehaviour
     public void Homing()
     {
         IsaiahsVars.SelectedCharacter = "Homing";
+        SceneManager.LoadScene("Game");
     }
     public void Spread()
     {
         IsaiahsVars.SelectedCharacter = "Spread";
+        SceneManager.LoadScene("Game");
     }
     public void Forward()
     {
         IsaiahsVars.SelectedCharacter = "Forward";
-    }
-    public void Necro()
-    {
-        IsaiahsVars.SelectedCharacter = "Necro";
+        SceneManager.LoadScene("Game");
     }
 }
