@@ -8,6 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject playerBullet;
     public GameObject boss;
     public GameObject SpellCreationManager;
+    public GameObject[] bullets;
     private Rigidbody2D rb2;
     private float movementSpeed = 5.0f;
 
@@ -56,6 +57,14 @@ public class PlayerBehavior : MonoBehaviour
         {
             Instantiate(playerBullet, new Vector3(gameObject.transform.position.x - .15f, gameObject.transform.position.y + .55f, 0), Quaternion.identity);
             Instantiate(playerBullet, new Vector3(gameObject.transform.position.x + .15f, gameObject.transform.position.y + .55f, 0), Quaternion.identity);
+        }
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            bullets = GameObject.FindGameObjectsWithTag("Bullet");
+            foreach(GameObject bullet in bullets)
+            {
+                Destroy(bullet);
+            }
         }
     }
 
