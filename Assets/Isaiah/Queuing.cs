@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Queuing : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class Queuing : MonoBehaviour
     string[] player1Data;
     string[] player2Data;
 
+    public bool isPlayer1;
+    public bool isPlayer2;
+
+    public bool player1Selected;
+    public bool player2Selected;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +35,10 @@ public class Queuing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(player1Selected == true && player2Selected == true)
+        {
+            CharacterSelect();
+        }
     }
 
 
@@ -61,11 +70,17 @@ public class Queuing : MonoBehaviour
         {
             Player1Space = CurrentPlayerName;
 
+            isPlayer1 = true;
+
             StartCoroutine(MasterScript.Push(250, Player1Space));
+
+            yield return new WaitForSeconds(1f);
         }
         else if (Player2Space == null || Player2Space.Contains("~"))
         {
             Player2Space = CurrentPlayerName;
+
+            isPlayer2 = true;
 
             StartCoroutine(MasterScript.Push(251, Player2Space));
 
@@ -110,6 +125,8 @@ public class Queuing : MonoBehaviour
             Player2.text = player2Data[1];
         }
 
+        player1Selected = true;
+        player2Selected = true;
     }
     
     public IEnumerator PullP1()
@@ -121,7 +138,6 @@ public class Queuing : MonoBehaviour
         //Debug.Log(IsaiahsVars.varToAssign);
 
         Player1Space = IsaiahsVars.varToAssign;
-
     }
 
     public IEnumerator PullP2()
@@ -133,6 +149,11 @@ public class Queuing : MonoBehaviour
         //Debug.Log(IsaiahsVars.varToAssign);
 
         Player2Space = IsaiahsVars.varToAssign;
+    }
+
+    public void CharacterSelect()
+    {
+        SceneManager.LoadScene("CharacterSelect");
     }
 
 }
