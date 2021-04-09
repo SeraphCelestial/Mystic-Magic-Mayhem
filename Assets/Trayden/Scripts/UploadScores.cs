@@ -2,43 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
 public class UploadScores : MonoBehaviour
 {
     public const string PullURL = "http://vgdapi.basmati.org/gets4.php?groupid=am30&row=";
-    public int enemyKillCount = 0;
-    public int grazeCount = 0;
-    public int cancelCount = 0;
+    public static int enemyKillCount = 0;
+    public static int cancelCount = 0;
+    public static int bombUseCount = 0;
+    public static int missCount = 0;
+    public static int bombPointLoss = 5;
+    public static int missPointLoss = 10;
     public static int totalScore = 0;
-    public static GameObject text;
-    public int bombUseCount = 0;
-    public int missCount = 0;
-    private int bombPointLoss = 10;
-    private int missPointLoss = 50;
-    void Start() 
-    {
-        text = this.gameObject;
-    }
     public void ScoreUpload()
     {
         StartCoroutine(MasterScript.Push(0, totalScore.ToString()));
-    }
-    public void GrazeBullet()
-    {
-        grazeCount += 10;
-    }
-    public void KillEnemy()
-    {
-        enemyKillCount++;
-    }
-    public void UseBomb()
-    {
-        bombUseCount++;
-    }
-    public void TakeHit()
-    {
-        missCount++;
     }
     public void RetriveScore()
     {
@@ -48,12 +25,10 @@ public class UploadScores : MonoBehaviour
     {
         string[] webData = webText.Split(',');
         totalScore = int.Parse(webData[1]);
-        text.GetComponent<Text>().text = totalScore.ToString();
     }
-    public void CalculateScore() 
+    public static void CalculateScore() 
     {
-        totalScore = (enemyKillCount+grazeCount+cancelCount+totalScore)-((bombUseCount*bombPointLoss)+(missCount*missPointLoss));
-        gameObject.GetComponent<Text>().text = totalScore.ToString();
+        totalScore = (enemyKillCount+cancelCount+totalScore)-((bombUseCount*bombPointLoss)+(missCount*missPointLoss));
     }
     public static IEnumerator Pull(string index)
     {

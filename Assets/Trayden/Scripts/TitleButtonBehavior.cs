@@ -9,12 +9,6 @@ public class TitleButtonBehavior : MonoBehaviour
     {
         SceneManager.LoadScene("Queuing test");
     }
-
-    public void StartPractice()
-    {
-        SceneManager.LoadScene("BossSpellPracticeMode");
-    }
-
     public void QuitGame()
     {
         Application.Quit();
