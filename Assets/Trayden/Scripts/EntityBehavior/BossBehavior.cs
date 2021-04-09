@@ -7,6 +7,8 @@ public class BossBehavior : MonoBehaviour
 {
     public int defeatCount = 0;
     public float bossHealth = 1000;
+    public static bool p1HasKilled = false;
+    public static bool p2HasKilled = false;
     public GameObject player;
     public GameObject SpellCreationManager;
     public GameObject[] leftovers;
@@ -45,6 +47,14 @@ public class BossBehavior : MonoBehaviour
             if(defeatCount == 3)
             {
                 SpellCreationManager.GetComponent<UploadScores>().FinalScoreUpload();
+                if(Queuing.isPlayer1 == true)
+                {
+                    p1HasKilled = true;
+                }
+                else if(Queuing.isPlayer2 == true)
+                {
+                    p2HasKilled = true;
+                }
                 SceneManager.LoadScene("FinalResults");
             }
         }

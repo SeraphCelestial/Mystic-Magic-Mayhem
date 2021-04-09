@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleButtonBehavior : MonoBehaviour
 {
+    public GameObject FinalScore;
     public void StartGame()
     {
         SceneManager.LoadScene("Queuing");
@@ -12,6 +13,7 @@ public class TitleButtonBehavior : MonoBehaviour
 
     public void ReturnToTitle()
     {
+        FinalScore.GetComponent<FinalScoreCalculation>().StartCoroutine("ClearData");
         SceneManager.LoadScene("Title");
     }
     public void QuitGame()
