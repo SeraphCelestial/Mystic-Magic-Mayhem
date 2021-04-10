@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1149342574952959855}
   m_Layer: 0
   m_Name: LaserBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,15 +47,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  damage: 1
   bulletType: LaserEnemy
-  target: {fileID: 0}
+  target: {fileID: 7009148529131382889, guid: 3e64fb02ca7e0cf9b86d922bacea5fae, type: 3}
   bouncesorWarps: 0
   aliveTime: 3
   explodeAmount: 0
   explodeBulletType: {fileID: 0}
   enemyBulletParent: {fileID: 0}
   laserSpeed: 0.01
+  homingForce: 0
+  homingRange: 0
 --- !u!50 &2114088010025400454
 Rigidbody2D:
   serializedVersion: 4
@@ -115,7 +116,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fc31bf1db10838a45b167f5b5687d6af, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

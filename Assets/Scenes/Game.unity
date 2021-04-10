@@ -128,11 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8504506454633762410, guid: 9bc4382468e4e9b209fe28e084ee7960,
-        type: 3}
-      propertyPath: SpellCreationManager
-      value: 
-      objectReference: {fileID: 1461351175}
     - target: {fileID: 8504506454633762411, guid: 9bc4382468e4e9b209fe28e084ee7960,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -339,11 +334,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss
-      objectReference: {fileID: 0}
-    - target: {fileID: 6667319834347006068, guid: 29f69106beafab2f0baf73510629d308,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29f69106beafab2f0baf73510629d308, type: 3}
@@ -934,6 +924,8 @@ MonoBehaviour:
   enemyBullet: {fileID: 7009148529131382889, guid: ad6777042f48f77e190e6a4de2fe4627,
     type: 3}
   bouncyBullet: {fileID: 8334590405072188005, guid: 7039685a1aa208844866b6842e9027e3,
+    type: 3}
+  explosiveBullet: {fileID: 1326249054450519667, guid: 06709ef13a683d34b9888d98f6344337,
     type: 3}
   enbullet: {fileID: 0}
 --- !u!224 &1461351177

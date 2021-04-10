@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5098344019477806752}
   m_Layer: 0
   m_Name: ExplosiveBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 217cf9e70b9976a45a58e09e2b3e1d41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,16 +96,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75db740939ae45445bedc447ddd4eaf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  damage: 1
+  speed: 0
   bulletType: ExplosiveEnemy
-  target: {fileID: 0}
-  bounces: 0
+  target: {fileID: 7009148529131382889, guid: 3e64fb02ca7e0cf9b86d922bacea5fae, type: 3}
+  bouncesorWarps: 0
   aliveTime: 3
-  explodeAmount: 16
-  explodeBulletType: {fileID: 7808915241638053092, guid: dddc0fec93751d24298ae521bb56e7f3,
+  explodeAmount: 1
+  explodeBulletType: {fileID: 8334590405072188005, guid: 7039685a1aa208844866b6842e9027e3,
     type: 3}
   enemyBulletParent: {fileID: 0}
+  laserSpeed: 0
+  homingForce: 0
+  homingRange: 0
 --- !u!50 &7164339638820383184
 Rigidbody2D:
   serializedVersion: 4

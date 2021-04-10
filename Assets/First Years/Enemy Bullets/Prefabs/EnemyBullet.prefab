@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4105571653175931959}
   m_Layer: 0
   m_Name: EnemyBullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 217cf9e70b9976a45a58e09e2b3e1d41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -97,9 +97,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  damage: 1
   bulletType: BasicEnemy
-  target: {fileID: 0}
+  target: {fileID: 7009148529131382889, guid: 3e64fb02ca7e0cf9b86d922bacea5fae, type: 3}
+  bouncesorWarps: 0
+  aliveTime: 0
+  explodeAmount: 0
+  explodeBulletType: {fileID: 0}
+  enemyBulletParent: {fileID: 0}
+  laserSpeed: 0
+  homingForce: 0
+  homingRange: 0
 --- !u!50 &2113814971931648839
 Rigidbody2D:
   serializedVersion: 4

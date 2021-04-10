@@ -206,7 +206,10 @@ public class Bullet : MonoBehaviour
         }
         #endregion
     }
-
+    private void OnBecameInvisible() 
+    {
+        Destroy(this.gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (bulletType == "BasicEnemy" || bulletType == "RicochetEnemy" || bulletType == "ExplosiveEnemy" || bulletType == "WarpEnemy")
