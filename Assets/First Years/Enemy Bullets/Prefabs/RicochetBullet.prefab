@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2813999298800927414}
   m_Layer: 0
   m_Name: RicochetBullet
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,8 +99,15 @@ MonoBehaviour:
   speed: 10
   damage: 1
   bulletType: RicochetEnemy
-  target: {fileID: 8504506454633762422, guid: 9bc4382468e4e9b209fe28e084ee7960, type: 3}
-  bounces: 10
+  target: {fileID: 0}
+  bouncesorWarps: 3
+  aliveTime: 0
+  explodeAmount: 0
+  explodeBulletType: {fileID: 0}
+  enemyBulletParent: {fileID: 0}
+  laserSpeed: 0
+  homingForce: 0
+  homingRange: 0
 --- !u!50 &189566099978704326
 Rigidbody2D:
   serializedVersion: 4

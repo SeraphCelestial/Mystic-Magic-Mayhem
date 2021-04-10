@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5098344019477806752}
   m_Layer: 0
   m_Name: ExplosiveBullet
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,8 +99,13 @@ MonoBehaviour:
   speed: 5
   damage: 1
   bulletType: ExplosiveEnemy
-  target: {fileID: 8504506454633762422, guid: 9bc4382468e4e9b209fe28e084ee7960, type: 3}
+  target: {fileID: 0}
   bounces: 0
+  aliveTime: 3
+  explodeAmount: 16
+  explodeBulletType: {fileID: 7808915241638053092, guid: dddc0fec93751d24298ae521bb56e7f3,
+    type: 3}
+  enemyBulletParent: {fileID: 0}
 --- !u!50 &7164339638820383184
 Rigidbody2D:
   serializedVersion: 4

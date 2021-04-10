@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7001753634196706698}
   m_Layer: 0
   m_Name: WarpBullet
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,11 @@ MonoBehaviour:
   damage: 1
   bulletType: WarpEnemy
   target: {fileID: 0}
-  bounces: 0
+  bouncesorWarps: 3
+  aliveTime: 0
+  explodeAmount: 0
+  explodeBulletType: {fileID: 0}
+  enemyBulletParent: {fileID: 0}
 --- !u!50 &4937939687211647738
 Rigidbody2D:
   serializedVersion: 4

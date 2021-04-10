@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4105571653175931959}
   m_Layer: 0
   m_Name: EnemyBullet
-  m_TagString: Bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,6 @@ MonoBehaviour:
   damage: 1
   bulletType: BasicEnemy
   target: {fileID: 0}
-  bounces: 0
 --- !u!50 &2113814971931648839
 Rigidbody2D:
   serializedVersion: 4
