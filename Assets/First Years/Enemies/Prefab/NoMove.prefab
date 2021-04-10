@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 3699118142890897252}
   - component: {fileID: 3699118142890897251}
   - component: {fileID: 3699118142890897248}
-  - component: {fileID: 3699118142890897250}
   - component: {fileID: 3699118142890897249}
   - component: {fileID: 3699118142890897278}
+  - component: {fileID: -4499021435695179878}
   m_Layer: 0
   m_Name: NoMove
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0863635d5109c74b91afaee4793f1ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc31bf1db10838a45b167f5b5687d6af, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,19 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3699118142890897250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3699118142890897255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efe227a380b84c418b6c6ce2092ac45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraName: Main Camera
 --- !u!114 &3699118142890897249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,9 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe66450b7b02e674aac2856ad9b55c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 501976851578293685, guid: dc1a7f7af047dd44fb27f1b9e64a461f, type: 3}
-  playerName: TestPlayer
-  shootDelayTime: 5
+  bullet: {fileID: 8334590405072188005, guid: 7039685a1aa208844866b6842e9027e3, type: 3}
+  playerName: Player
+  shootDelayTime: 0
 --- !u!114 &3699118142890897278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +161,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 15
+--- !u!114 &-4499021435695179878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3699118142890897255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efe227a380b84c418b6c6ce2092ac45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraName: Main Camera

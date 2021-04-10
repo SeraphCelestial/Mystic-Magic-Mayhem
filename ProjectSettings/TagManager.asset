@@ -8,6 +8,8 @@ TagManager:
   - Boss
   - SpellUI
   - PlayerBullet
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

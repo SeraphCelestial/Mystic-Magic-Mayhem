@@ -12,7 +12,7 @@ public class NoMoveShoot : MonoBehaviour
     GameObject player;
 
     //Holds seconds between each shot after the first
-    public float shootDelayTime = 5;
+    public float shootDelayTime = .75f;
 
     //Holds angle data
     Vector3 vectorToPlayer;
@@ -20,7 +20,7 @@ public class NoMoveShoot : MonoBehaviour
     Quaternion quaternionToPlayer;
 
     //Times out each shot
-    float shootTimer = 1;
+    float shootTimer = .75f;
 
     void Start()
     {

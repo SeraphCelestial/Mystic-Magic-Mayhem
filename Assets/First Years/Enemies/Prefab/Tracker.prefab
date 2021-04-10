@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8784592987240412185}
   m_Layer: 0
   m_Name: Tracker
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a9d4d9a16b32abc488267388b370c623, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56277ede4793a6258b9715d5f0afe06a, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a134f64cd7a8f6340a6ae218dfe59750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: TestPlayer
+  playerName: Player
   speed: 3
   facePlayer: 1
 --- !u!114 &8784592987240412185
@@ -175,6 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d9a639305d668941b00b1a4ca4f2081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 501976851578293685, guid: dc1a7f7af047dd44fb27f1b9e64a461f, type: 3}
-  playerName: TestPlayer
+  bullet: {fileID: 7808915241638053092, guid: dddc0fec93751d24298ae521bb56e7f3, type: 3}
+  playerName: Player
   health: 3

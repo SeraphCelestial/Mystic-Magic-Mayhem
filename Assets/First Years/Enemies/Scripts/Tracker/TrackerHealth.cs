@@ -12,7 +12,7 @@ public class TrackerHealth : MonoBehaviour
     GameObject player;
 
     //Holds health
-    public int health = 3;
+    public float health = 3f;
 
     //Holds angle data
     Vector3 vectorToPlayer;
@@ -58,16 +58,12 @@ public class TrackerHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    //Subtracts health based off given number
-    public void damage(int damage)
+    private void OnTriggerEnter2D(Collider2D collision) 
     {
-        health -= damage;
-    }
-
-    //Subtracts one hp
-    public void damage()
-    {
-        health--;
+        if(collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            health = health - .3f;
+            Destroy(collision.gameObject);
+        }
     }
 }

@@ -46,15 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75db740939ae45445bedc447ddd4eaf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
   bulletType: LaserEnemy
   target: {fileID: 7009148529131382889, guid: 3e64fb02ca7e0cf9b86d922bacea5fae, type: 3}
   bouncesorWarps: 0
-  aliveTime: 3
+  aliveTime: 5
   explodeAmount: 0
   explodeBulletType: {fileID: 0}
   enemyBulletParent: {fileID: 0}
-  laserSpeed: 0.01
+  laserSpeed: 0.08
   homingForce: 0
   homingRange: 0
 --- !u!50 &2114088010025400454

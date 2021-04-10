@@ -921,11 +921,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 445204786}
   player: {fileID: 8504506454633762422, guid: 9bc4382468e4e9b209fe28e084ee7960, type: 3}
-  enemyBullet: {fileID: 7009148529131382889, guid: ad6777042f48f77e190e6a4de2fe4627,
-    type: 3}
   bouncyBullet: {fileID: 8334590405072188005, guid: 7039685a1aa208844866b6842e9027e3,
     type: 3}
-  explosiveBullet: {fileID: 1326249054450519667, guid: 06709ef13a683d34b9888d98f6344337,
+  enemyBullet: {fileID: 7009148529131382889, guid: ad6777042f48f77e190e6a4de2fe4627,
+    type: 3}
+  explosiveBullet: {fileID: 7808590111043673893, guid: 2cecea6c2b9aa6240a135d566276a3bb,
+    type: 3}
+  noMoveEnemy: {fileID: 3699118142890897255, guid: ac1b3845edd8219479173de5ac6df4d7,
+    type: 3}
+  tracerEnemy: {fileID: 8784592987240412166, guid: d42dd2c08d873d0499084e4c5c1d7d4a,
     type: 3}
   enbullet: {fileID: 0}
 --- !u!224 &1461351177

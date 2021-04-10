@@ -30,6 +30,11 @@ public class BossBehavior : MonoBehaviour
                 {
                     Destroy(bullet);
                 }
+                leftovers = GameObject.FindGameObjectsWithTag("Enemy");
+                foreach(GameObject bullet in leftovers)
+                {
+                    Destroy(bullet);
+                }
                 SpellCreationManager.GetComponent<CreateSpells>().StartCoroutine("GenSpell2");
             }
             if(defeatCount == 2)
