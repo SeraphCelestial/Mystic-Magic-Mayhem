@@ -7,6 +7,7 @@ public class MasterScript : MonoBehaviour
 {
     public const string PushURL = "http://vgdapi.basmati.org/mods4.php";
     public const string PullURL = "http://vgdapi.basmati.org/gets4.php?groupid=am30&row=";
+    public GameObject nameInsert;
 
     private void Awake()
     {
@@ -34,11 +35,6 @@ public class MasterScript : MonoBehaviour
             {
                 Debug.LogError("An unexpected error has occured whilst trying to push.");
             }
-            else
-            {
-                Debug.Log("A push " + content + " has been added to row " + index);
-            }
-
             yield return null;
         }
     }
@@ -61,8 +57,6 @@ public class MasterScript : MonoBehaviour
                 varToAssign = webRequest.downloadHandler.text;
 
                 IsaiahsVars.varToAssign = varToAssign;
-
-                Debug.Log(varToAssign);
             }
         }
     }
@@ -80,6 +74,7 @@ public class MasterScript : MonoBehaviour
 
             StartCoroutine(Push(i, "~"));
         }
+        nameInsert.SetActive(true);
     }
     
 }

@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 public class BossBehavior : MonoBehaviour
 {
     public int defeatCount = 0;
-    public float bossHealth = 1000;
-    public static bool p1HasKilled = false;
-    public static bool p2HasKilled = false;
+    public float bossHealth = 2000;
+    private static int completionValue = 100;
     public GameObject player;
     public GameObject SpellCreationManager;
     public GameObject[] leftovers;
@@ -24,7 +23,7 @@ public class BossBehavior : MonoBehaviour
             defeatCount++;
             if(defeatCount == 1)
             {
-                bossHealth = 1000;
+                bossHealth = 2000;
                 SpellCreationManager.GetComponent<CreateSpells>().StopAllCoroutines();
                 leftovers = GameObject.FindGameObjectsWithTag("Bullet");
                 foreach(GameObject bullet in leftovers)
@@ -35,7 +34,7 @@ public class BossBehavior : MonoBehaviour
             }
             if(defeatCount == 2)
             {
-                bossHealth = 1000;
+                bossHealth = 2000;
                 SpellCreationManager.GetComponent<CreateSpells>().StopAllCoroutines();
                 leftovers = GameObject.FindGameObjectsWithTag("Bullet");
                 foreach(GameObject bullet in leftovers)
@@ -46,15 +45,15 @@ public class BossBehavior : MonoBehaviour
             }
             if(defeatCount == 3)
             {
-                SpellCreationManager.GetComponent<UploadScores>().FinalScoreUpload();
                 if(Queuing.isPlayer1 == true)
                 {
-                    p1HasKilled = true;
+                    StartCoroutine(MasterScript.Push(8, completionValue.ToString()));
                 }
-                else if(Queuing.isPlayer2 == true)
+                if(Queuing.isPlayer2 == true)
                 {
-                    p2HasKilled = true;
+                    StartCoroutine(MasterScript.Push(9, completionValue.ToString()));
                 }
+                SpellCreationManager.GetComponent<UploadScores>().FinalScoreUpload();
                 SceneManager.LoadScene("FinalResults");
             }
         }
@@ -63,7 +62,7 @@ public class BossBehavior : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("PlayerBullet"))
         {
-            bossHealth = bossHealth - .5f;
+            bossHealth = bossHealth - .3f;
             Destroy(collision.gameObject);
         }
     }

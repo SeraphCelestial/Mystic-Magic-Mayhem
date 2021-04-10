@@ -104,8 +104,6 @@ public class Queuing : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        Debug.Log(Player2Space);
-
         player2Data = Player2Space.Split(',');
 
         if (player1Data[1] != null)
